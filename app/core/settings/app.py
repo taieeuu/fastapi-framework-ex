@@ -1,9 +1,9 @@
 import logging
 from typing import Any, Dict, List
-# from loguru import logger
-# from pydantic import PostgresDsn, SecretStr
 
+from pydantic import ConfigDict
 from app.core.settings.base import BaseAppSettings
+
 
 class AppSettings(BaseAppSettings):
     debug: bool = False
@@ -11,7 +11,7 @@ class AppSettings(BaseAppSettings):
     openapi_prefix: str = ""
     openapi_url: str = "/openapi.json"
     redoc_url: str = "/redoc"
-    title: str = "FastAPI Application"
+    title: str = "FastAPI Pk_index Application"
     version: str = "0.1.0"
 
     # database_url: PostgresDsn
@@ -29,11 +29,12 @@ class AppSettings(BaseAppSettings):
     logging_level: int = logging.INFO
     # loggers: Tuple[str, str] = ("uvicorn.asgi", "uvicorn.access")
 
-    host_name: str = 'localhost'
+    host_name: str = "localhost"
 
-    class Config:
-        # 模型實例的字段進行賦值時驗證數據類型，可以確保在運行時數據的一致性和正確性。
-        validate_assignment = True
+    model_config = ConfigDict(
+        validate_assignment=True,
+        env_file=".env"
+    )
 
     @property
     def fastapi_kwargs(self) -> Dict[str, Any]:

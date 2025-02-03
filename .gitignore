@@ -1,2 +1,14 @@
 .log/
 **/__pycache__
+/htmlcov/
+.coverage
+./.vscode/
+/.pytest_cache
+.env
+/dist
+**.xlsx
+da_need/
+sample/
+return_code_sample.py
+/build
+.DS_Store

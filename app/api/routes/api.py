@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-from app.api.routes import indicator
-from app.api.routes import as400_middle
+from app.api.routes import sample_router
+from app.api.routes import sql_router
 
 router = APIRouter()
-router.include_router(indicator.router, prefix="/indicator", tags=["indicator"])
-router.include_router(as400_middle.router, prefix="/as400", tags=["as400"])
+router.include_router(sample_router.router, prefix="/sample_router", tags=["sample_api"])
+router.include_router(sql_router.router, prefix="/sql_router", tags=["as400"])

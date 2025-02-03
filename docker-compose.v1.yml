@@ -1,0 +1,22 @@
+services:
+    backend_v1:
+        build:
+            context: .
+            platforms:
+                - linux/amd64
+        image: backend_v1:latest
+        container_name: backend_v1
+        restart: always
+        env_file: .env
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/app
+        entrypoint: python main.py
+        networks:
+            app-network:
+                ipv4_address: 10.170.2.152
+
+networks:
+    app-network:
+        external: true

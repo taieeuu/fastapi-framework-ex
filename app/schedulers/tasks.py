@@ -11,7 +11,7 @@ def call_api():
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     logging.info(f"Calling API at {now}")
     apis_to_call = [
-        {"endpoint": "/api/indicator/xxx", "params": {"code": "1234"}},
+        {"endpoint": "/api/sample_router/xxx", "params": {"code": "1234"}},
     ]
     
     for api in apis_to_call:

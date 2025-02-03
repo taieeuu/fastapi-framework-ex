@@ -26,4 +26,3 @@ def to_mdc_prod():
 def connect_with_pymongo():
     user, pwd, host, port, db = connect_init()
     return MongoClient(f'mongodb://{user}:{pwd}@{host}:{port}/?authSource={db}')
-
