@@ -7,9 +7,9 @@ TAG ?= latest
 
 define get_api_base_url
 $(shell if [ "$(ENV)" = "uat" ]; then \
-    echo "http://172.22.2.150:8080"; \
+    echo "<uat_ip>:8080"; \
 elif [ "$(ENV)" = "prod" ]; then \
-    echo "http://172.22.1.150:8080"; \
+    echo "<prod_ip>:8080"; \
 elif [ "$(ENV)" = "dev" ]; then \
     echo "http://localhost:8080"; \
 else \
@@ -25,9 +25,9 @@ test_e2e:
 	@echo "API_BASE_URL: $(API_BASE_URL)"
 	$(PYTEST) tests/da_app/end2end/ --API_BASE_URL=$(API_BASE_URL) --ENV=${ENV}
 
-# .PHONY: test_unit
-# test_unit:
-# 	pytest -m unit
+.PHONY: test_unit
+test_unit:
+	pytest -m unit
 
 .PHONY: archive
 archive:
